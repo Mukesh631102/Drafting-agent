@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFinance AI | Agentic Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0b0e14; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .terminal { font-family: 'Fira Code', monospace; font-size: 0.85rem; height: 300px; overflow-y: auto; }
+        .accent-glow { box-shadow: 0 0 15px rgba(0, 123, 255, 0.3); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <header class="flex justify-between items-center mb-10">
+            <div>
+                <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">EduFinance Agentic AI</h1>
+                <p class="text-slate-400">Autonomous Financial Reconciliation & Drafting System</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="flex h-3 w-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-sm font-medium">Agent Active: Groq-120B</span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-1 space-y-6">
+                <div class="glass p-6 rounded-2xl accent-glow">
+                    <h2 class="text-lg font-semibold mb-4 text-blue-400">Agent Controls</h2>
+                    <button onclick="runAudit()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 px-4 rounded-xl transition-all active:scale-95">
+                        Run Autonomous Audit
+                    </button>
+                    <p class="text-xs text-slate-500 mt-3 text-center">Triggers: Retrieval → Analysis → Reflection → Draft</p>
+                </div>
+
+                <div class="glass p-6 rounded-2xl">
+                    <h2 class="text-lg font-semibold mb-2">Metrics</h2>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="bg-slate-900/50 p-4 rounded-lg">
+                            <p class="text-xs text-slate-500">PENDING</p>
+                            <p class="text-xl font-bold">14</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded-lg">
+                            <p class="text-xs text-slate-500">ACCURACY</p>
+                            <p class="text-xl font-bold text-emerald-400">99.8%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-8">
+                <div class="glass p-6 rounded-2xl border-l-4 border-blue-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-sm font-bold uppercase tracking-widest text-slate-500">Live Agent Terminal</h2>
+                        <span class="text-xs text-slate-400">v1.0.4-stable</span>
+                    </div>
+                    <div id="terminal" class="terminal space-y-1 text-emerald-500/90">
+                        <p class="text-slate-500">> Initializing DatabaseManager...</p>
+                        <p class="text-slate-500">> Connecting to SQLite instance...</p>
+                        <p class="text-blue-400">> Agent ready for instruction.</p>
+                    </div>
+                </div>
+
+                <div class="glass p-6 rounded-2xl">
+                    <h2 class="text-xl font-bold mb-6">Pending AI Drafts</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead>
+                                <tr class="text-slate-500 border-b border-white/5">
+                                    <th class="pb-3 px-4">Student</th>
+                                    <th class="pb-3 px-4">AI Reflection</th>
+                                    <th class="pb-3 px-4">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-white/5">
+                                <tr class="group hover:bg-white/5 transition-colors">
+                                    <td class="py-4 px-4">
+                                        <div class="font-semibold">Alice Smith</div>
+                                        <div class="text-xs text-slate-500">ID: EDU-1029</div>
+                                    </td>
+                                    <td class="py-4 px-4 text-xs italic text-slate-400 max-w-xs">
+                                        "Verified tuition balance ($1,200) vs. payment ($500). Drafted reminder with empathetic tone."
+                                    </td>
+                                    <td class="py-4 px-4">
+                                        <button class="bg-emerald-500/20 text-emerald-400 text-xs px-3 py-1 rounded hover:bg-emerald-500 hover:text-white transition-all">Approve</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function runAudit() {
+            const term = document.getElementById('terminal');
+            const logs = [
+                "Scanning bank_feed for new transactions...",
+                "FOUND: Transaction #882 (Payer: Alice Smith)",
+                "REASONING: Cross-referencing ID EDU-1029 with student master records...",
+                "LOGIC: Balance discrepancy found. Expected $1200, Received $500.",
+                "GENERATING: Creating initial reminder draft via Groq-120B...",
+                "REFLECTION: Running Critic Agent (reflection.py)...",
+                "CRITIQUE: Draft tone is correct. Math verified.",
+                "SUCCESS: Draft saved to SQLite (status: pending_review)."
+            ];
+
+            let i = 0;
+            const interval = setInterval(() => {
+                if(i < logs.length) {
+                    const p = document.createElement('p');
+                    p.textContent = `> ${logs[i]}`;
+                    if(logs[i].includes('SUCCESS')) p.className = 'text-emerald-400 font-bold';
+                    if(logs[i].includes('REFLECTION')) p.className = 'text-purple-400';
+                    term.appendChild(p);
+                    term.scrollTop = term.scrollHeight;
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 800);
+        }
+    </script>
+</body>
+</html>
