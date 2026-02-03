@@ -5,7 +5,7 @@ from groq import Groq
 class ReflectionAgent:
     def __init__(self):
         # Pulls key securely from .streamlit/secrets.toml
-        self.client = Groq(api_key=st.secrets["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"])
+        self.client = Groq(api_key=st.secrets[""])
 
     def audit_and_draft(self, transaction_data):
         # Step 1: Initial Reasoning
