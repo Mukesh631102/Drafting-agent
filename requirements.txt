@@ -1,4 +1,22 @@
-streamlit
-groq
-python-dotenv
-tenacity
+# Core Streamlit & Web UI
+streamlit>=1.35.0
+pandas>=2.0.0
+plotly>=5.20.0
+
+# LLM Providers & Agents
+groq>=0.11.0
+google-generativeai>=0.7.0
+langchain-google-genai>=1.0.6
+langgraph>=0.0.60
+langchain-core>=0.2.0
+
+# Document & PDF Generation
+fpdf2>=2.7.9
+
+# Environment & Resilience
+python-dotenv>=1.0.1
+tenacity>=8.3.0
+pydantic>=2.7.0
+
+# Model Context Protocol (MCP) Server
+fastmcp>=0.1.0
